@@ -1,21 +1,31 @@
 ﻿using System;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
+using SeleniumTest.Core.Interfaces;
 
 namespace SeleniumTest.Core.Drivers;
 
-public class ChromeWebDriver
+public class ChromeWebDriver : IGenericWebDriver
 {
-    public IWebDriver Driver { get; }
-    private readonly ConfigBuilder _config = ConfigBuilder.Instance;
+    private readonly IWebDriver _driver;
 
     public ChromeWebDriver()
     {
-        Driver = new ChromeDriver();
-        Driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(
-            _config.GetInt("DriverImplicitTimeout")
+        _driver = new ChromeDriver();
+        _driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(
+            ConfigModel.DriverExplicitTimeout
         );
-        Driver.Manage().Window.Maximize();
+        _driver.Manage().Window.Maximize();
+    }
+
+    public IWebDriver Instance()
+    {
+        return _driver;
+    }
+
+    public void Dispose()
+    {
+        _driver.Dispose();
     }
 }
 
@@ -41,6 +51,6 @@ public class ChromeWebDriver
         Driver.Dispose();
     }
 
-    public static ChromeWebDriver Instance => _instance;
+    public static ChromeWebDriver Instance => _instance; //New changes
 }
 */
