@@ -1,6 +1,6 @@
 Feature: Item Deletion
     As a logged in user, the user should be able to delete existing items from a project.
-    @acceptance
+    @Acceptance
 
     Background:
         Given the user is logged in
