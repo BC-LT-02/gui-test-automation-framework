@@ -2,6 +2,7 @@
 using System.Linq;
 using SeleniumTest.Core.Drivers;
 using SeleniumTest.Core.Interfaces;
+using SeleniumTest.Tests.Steps.Commons;
 using TechTalk.SpecFlow;
 
 namespace SeleniumTest.Tests.Steps.Item;
@@ -9,34 +10,17 @@ namespace SeleniumTest.Tests.Steps.Item;
 [Binding]
 [Scope(Feature = "Update Item")]
 [Collection("Selenium")]
-public class StepDefinitions : IClassFixture<ChromeWebDriver>
+public class UpdateStepDefinitions : CommonSteps
 {
     private readonly IGenericWebDriver _driver;
     private readonly ScenarioContext _scenarioContext;
 
-    public StepDefinitions(ScenarioContext scenarioContext, ChromeWebDriver driver)
+    public UpdateStepDefinitions(ScenarioContext scenarioContext, ChromeWebDriver driver)
+        : base(scenarioContext, driver)
     {
         _scenarioContext = scenarioContext;
         _driver = driver;
         Skip.If(_scenarioContext.ScenarioInfo.Tags.Contains("Draft"));
-    }
-
-    [Given(@"the user is logged in")]
-    public void Giventheuserisloggedin()
-    {
-        _scenarioContext.Pending();
-    }
-
-    [Given(@"the user has an existing project")]
-    public void Giventheuserhasanexistingproject()
-    {
-        _scenarioContext.Pending();
-    }
-
-    [Given(@"the user has an existing item")]
-    public void Giventheuserhasanexistingitem()
-    {
-        _scenarioContext.Pending();
     }
 
     [When(@"the user clicks the item name box")]

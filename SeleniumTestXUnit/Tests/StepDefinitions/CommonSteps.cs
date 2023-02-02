@@ -1,4 +1,5 @@
-﻿using SeleniumTest.Core.Drivers;
+﻿using System.Linq;
+using SeleniumTest.Core.Drivers;
 using SeleniumTest.Core.Interfaces;
 using TechTalk.SpecFlow;
 
@@ -13,5 +14,23 @@ public class CommonSteps : IClassFixture<ChromeWebDriver>
     {
         _scenarioContext = scenarioContext;
         _driver = driver;
+    }
+
+    [Given(@"the user is logged in")]
+    public void Giventheuserisloggedin()
+    {
+        _scenarioContext.Pending();
+    }
+
+    [Given(@"the user has an existing project")]
+    public void Giventheuserhasanexistingproject()
+    {
+        _scenarioContext.Pending();
+    }
+
+    [Given(@"the user has an existing item")]
+    public void Giventheuserhasanexistingitem()
+    {
+        _scenarioContext.Pending();
     }
 }
